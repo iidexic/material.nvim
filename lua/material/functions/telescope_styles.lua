@@ -3,7 +3,17 @@ local M = {}
 
 if not ok then
 	M.find = function()
-		local styles = { "darker", "lighter", "deep ocean", "oceanic", "palenight" }
+		local styles = {
+			"darker",
+			"lighter",
+			"dusty",
+			"spacedust",
+			"spacedust pro",
+			"oceanic",
+			"fpwst",
+			"monokai-machine",
+			--"grail",
+		}
 		vim.ui.select(styles, { prompt = "Material" }, function(style)
 			vim.g.material_style = style
 			vim.cmd("colorscheme material")
@@ -41,9 +51,13 @@ else
 		finder = finders.new_table({
 			"darker",
 			"lighter",
-			"deep ocean",
+			"dusty",
+			"spacedust",
+			"spacedust pro",
 			"oceanic",
-			"palenight",
+			"fpwst",
+			"monokai-machine",
+			--"grail",
 		}),
 		prompt_title = "Material",
 		results_title = "styles",
