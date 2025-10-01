@@ -6,6 +6,6 @@ package.loaded["material.functions"] = nil
 package.loaded["material.highlights"] = nil
 package.loaded["material.highlights.plugins"] = nil
 
-vim.g.material_style = "spacedust pro"
+vim.g.material_style = "spacedust_pro"
 
 require("material.util").load()

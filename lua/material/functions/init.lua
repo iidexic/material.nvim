@@ -30,14 +30,15 @@ M.toggle_style = function()
 	end
 	local styles = {
 		"darker",
-		"monokai-machine",
+		"monokai_machine",
 		--"grail",
 		"dusty",
 		"lighter",
 		"fpwst",
 		"oceanic",
 		"spacedust",
-		"spacedust pro",
+		"spacedust_pro",
+		"inferno",
 	}
 	vim.g.material_style_iterator = (vim.g.material_style_iterator % #styles) + 1
 	M.change_style(styles[vim.g.material_style_iterator])
