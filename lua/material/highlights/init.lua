@@ -3,11 +3,12 @@ local settings = require("material.util.config").settings
 local plugins = require("material.highlights.plugins")
 local functions = require("material.functions")
 local styles = settings.styles
-
 --TODO: HIGHEST PRIORITY: Gotta re-write some shit over here
 --
 -- apply conditional colors
 colors = require("material.colors.conditionals")
+
+local d = require("material.functions.d")
 
 local m = colors.main
 local e = colors.editor
@@ -15,6 +16,9 @@ local g = colors.git
 local l = colors.lsp
 local s = colors.syntax
 local b = colors.backgrounds
+-- colors = require("material.colors.conditionals")
+-- local customhl = require("material.colors.alt_hl")
+-- vim.print(customhl.style_highlights(colors))
 
 local M = {}
 
@@ -27,41 +31,42 @@ M.async_highlights = {}
 ---regular Vim syntax highlights
 M.main_highlights.syntax = function()
 	local syntax_hls = {
+		StorageClass = { fg = s.storageClass or m.cyan }, --(cyan) static, register, volatile, etc.
+		Statement = { fg = s.statement or m.cyan }, -- cyan
 		Identifier = { fg = s.variable },
 		Comment = { fg = s.comments },
 		Keyword = { fg = s.keyword },
-		Conditional = { fg = s.keyword },
+		Conditional = { fg = s.conditional or s.keyword },
 		Function = { fg = s.fn },
-		Repeat = { fg = s.keyword },
-		String = { fg = s.string },
-		Type = { fg = s.type },
-		StorageClass = { fg = m.cyan }, -- static, register, volatile, etc.
-		Structure = { fg = s.type },
-		SpecialComment = { link = "Comment" }, -- special things inside a comment
-		Constant = { fg = m.yellow },
+		Repeat = { fg = s.repeat_keyword or s.keyword },
+		String = { fg = s.string }, -- string + rune
+		Type = { fg = s.type }, -- no go
+		Structure = { fg = s.type }, -- no go
+		SpecialComment = d.fg_or_link(s.specialComment, "Comment"), -- special things inside a comment
+		-- ──────────────────────────────── NEW ────────────────────────────────
+		VarMember = { fg = s.member or e.fg_dark }, -- yellow
+		VarParam = d.fg_or_link(s.parameter, "Identifier"), -- yellow
+		-- ─────────────────────────────────────────────────────────────────────
+		Constant = { fg = s.const or m.yellow }, -- yellow
 		Number = { fg = s.value },
-		Character = { link = "Number" },
-		Boolean = { link = "Number" },
-		Float = { link = "Number" },
-		Statement = { fg = m.cyan },
-		Label = { fg = s.keyword }, -- case, default, etc.
+		Character = { link = "Number" }, -- no go
+		Boolean = d.fg_or_link(s.boolean, "Number"),
+		Float = d.fg_or_link(s.float, "Number"),
+		Label = { fg = s.keyword }, -- (no go?) case, default, etc.
 		Operator = { fg = s.operator },
-		Exception = { fg = m.red },
-		Macro = { fg = m.cyan },
+		Exception = { fg = s.exception or m.red },
+		Macro = { fg = m.cyan }, -- cyan
 		Include = { link = "Macro" },
-		-- Define         = { link = "Macro" },
-		-- PreProc        = { link = "Macro" },
-		-- PreCondit   = { link = "Macro" },
-		Typedef = { fg = m.red },
-		Special = { fg = m.cyan },
-		SpecialChar = { fg = m.red },
-		Tag = { fg = m.red },
-		Delimiter = { fg = s.operator }, -- ;
-		Debug = { fg = m.red },
+		-- Define = { link = "Macro" }, PreProc = { link = "Macro" }, PreCondit = { link = "Macro" },
+		Typedef = { fg = s.typedef or m.red },
+		Special = { fg = s.special or m.cyan }, -- cyan
+		SpecialChar = { fg = s.specialChar or m.red }, -- red
+		Tag = { fg = s.tag or m.red }, -- red (?)
+		Delimiter = { fg = s.delimiter or s.operator }, -- ;
+		Debug = { fg = m.red }, -- red
 		htmlLink = { fg = e.link, underline = true },
-		-- htmlH1         = { fg = m.cyan, bold = true },
-		-- htmlH2         = { fg = m.red, bold = true },
-		-- htmlH3         = { fg = m.green, bold = true },
+		Bracket = { fg = s.bracket or m.blue },
+		-- htmlH1 = {fg=m.cyan,bold=true}, htmlH2 = {fg=m.red,bold=true}, htmlH3 = {fg=m.green,bold=true},
 	}
 
 	-- apply the user set styles for these groups
@@ -87,41 +92,44 @@ M.main_highlights.treesitter = function()
 			["@error"] = { link = "Error" },
 
 			["@comment"] = { link = "Comment" },
-			["@comment.todo"] = { link = "Comment" },
+			["@comment.todo"] = { link = "Comment" }, -- oh
 			["@comment.error"] = { fg = s.comments, bg = l.error },
 			["@comment.warning"] = { fg = s.comments, bg = l.warning },
 			["@comment.hint"] = { fg = s.comments, bg = l.hint },
 			["@comment.note"] = { fg = s.comments, bg = l.info },
 
-			["@type"] = { fg = s.type },
-			["@type.builtin"] = { fg = s.type },
-			["@type.definition"] = { fg = m.type },
-			["@type.qualifier"] = { fg = m.cyan },
+			["@type"] = { fg = s.type }, -- nogo
+			["@type.builtin"] = { fg = s.type }, -- nogo
+			["@type.definition"] = { fg = m.type }, -- nogo
+			["@type.qualifier"] = { fg = m.definition }, -- m.cyan-nogo
 
-			["@variable"] = { link = "Identifier" },
-			["@variable.builtin"] = { link = "@keyword" },
+			["@variable"] = { link = "Identifier" }, -- s.variable (link Identifier)
 			-- ["@field"]              = { fg = e.fg_dark },
-			["@property"] = { fg = e.fg_dark },
-			["@variable.parameter"] = { link = "Identifier" },
-			["@variable.member"] = { fg = e.fg_dark }, -- Fields
+			-- property: lua table key, go struct field name (not def)
+			["@property"] = { fg = s.property or e.fg_dark },
+			["@variable.parameter"] = { link = "VarParam" }, --linkid go: func param, structname 4 method
+			["@variable.member"] = { link = "VarMember" }, -- (fg.dark) Struct field name (definition)
 			["@string.special.symbol"] = { fg = m.yellow },
-
-			["@function"] = { link = "Function" },
+			-- link function:
+			["@function"] = { link = "Function" }, -- non-method
 			["@function.call"] = { link = "Function" },
 			["@function.builtin"] = { link = "Function" },
 			["@function.macro"] = { link = "Function" },
-
 			["@function.method"] = { link = "Function" },
 			["@function.method.call"] = { link = "Function" },
 
-			["@constructor"] = { fg = m.blue },
+			-- constructor: lua: curly brackets, go: ?
+			["@constructor"] = { fg = m.blue }, -- blue
 
-			["@keyword"] = { fg = m.cyan },
+			-- why would keyword not be keyword
+			["@keyword"] = { fg = s.keyword }, -- cyan
+			-- Link @keyword
+			["@variable.builtin"] = { link = "@keyword" },
 			["@keyword.coroutine"] = { fg = m.cyan, italic = true },
 			["@keyword.operator"] = { link = "@keyword" },
-			["@keyword.return"] = { link = "@keyword" },
-			["@keyword.function"] = { link = "@keyword" },
-			["@keyword.export"] = { link = "@keyword" },
+			["@keyword.return"] = { link = "@keyword" }, -- return
+			["@keyword.function"] = { link = "@keyword" }, -- func
+			["@keyword.export"] = { link = "@keyword" }, -- not in go
 
 			["@keyword.conditional"] = { link = "Conditional" },
 			["@keyword.repeat"] = { link = "Repeat" },
@@ -129,19 +137,19 @@ M.main_highlights.treesitter = function()
 			["@keyword.exception"] = { link = "Exception" },
 
 			["@constant"] = { fg = m.yellow },
-			["@constant.builtin"] = { fg = m.yellow },
-			["@constant.macro"] = { fg = m.cyan },
+			["@constant.builtin"] = { fg = m.yellow }, -- iota, nil
+			["@constant.macro"] = { fg = m.cyan }, -- nogo
 
-			["@keyword.directive"] = { fg = m.cyan },
-			["@macro"] = { fg = m.cyan },
-			["@module"] = { fg = m.yellow },
+			["@keyword.directive"] = { fg = m.cyan }, -- nogo
+			["@macro"] = { fg = m.cyan }, -- nogo
+			["@module"] = { fg = m.yellow }, -- package name only
 
 			["@string"] = { link = "String" },
-			["@string.escape"] = { fg = e.fg_dark },
-			["@string.regexp"] = { fg = m.yellow },
-			["@string.special"] = { fg = e.fg_dark },
+			["@string.escape"] = { fg = e.fg_dark }, -- nogo
+			["@string.regexp"] = { fg = m.yellow }, -- nogo
+			["@string.special"] = { fg = e.fg_dark }, -- nogo
 
-			["@character"] = { link = "Character" },
+			["@character"] = { link = "Character" }, -- nogo
 			["@character.special"] = { link = "SpecialChar" },
 
 			["@diff.plus"] = { link = "DiffAdd" },
@@ -153,9 +161,10 @@ M.main_highlights.treesitter = function()
 			["@keyword.storage"] = { fg = m.cyan },
 
 			["@label"] = { fg = m.yellow },
-			["@punctuation"] = { fg = m.cyan },
-			["@punctuation.delimiter"] = { fg = m.cyan },
-			["@punctuation.bracket"] = { fg = m.cyan },
+			["@punctuation"] = { fg = m.cyan }, -- nogo
+			["@punctuation.delimiter"] = { link = "Delimiter" }, -- comma, colon, semicolon
+			["@punctuation.bracket"] = { link = "Bracket" },
+			--d.fg_or_link(m.cyan, "@punctuation.bracket"), -- curly (not lua), square, paren
 			["@punctuation.special"] = { fg = m.cyan },
 			["@markup.underline"] = { underline = true },
 			["@markup.emphasis"] = { italic = true },
@@ -183,9 +192,9 @@ M.main_highlights.treesitter = function()
 			TreesitterContext = { bg = e.contrast },
 			TreesitterContextLineNumber = { fg = e.line_numbers, bg = e.contrast },
 
-			["@boolean"] = { link = "Boolean" },
-			["@number"] = { link = "Number" },
-			["@number.float"] = { link = "Float" },
+			["@boolean"] = { link = "Boolean" }, -- go boolean
+			["@number"] = { link = "Number" }, -- go integer
+			["@number.float"] = { link = "Float" }, -- go not lua
 		}
 
 		-- Legacy highlights, for backward compatibility
@@ -391,7 +400,7 @@ M.main_highlights.load_lsp = function()
 	local lsp_hls = {
 		DiagnosticError = { fg = l.error },
 		DiagnosticWarn = { fg = l.warning },
-		DiagnosticInformation = { fg = l.info },
+		DiagnosticInfo = { fg = l.info },
 		DiagnosticHint = { fg = l.hint },
 	}
 

@@ -39,7 +39,56 @@ function M.make_groups(colors)
 			cursor_line = colors.editor.active,
 		},
 	}
-	groups.defaultSidebar = {
+	apply.default_extended = {
+		syntax = {
+			variable = colors.editor.fg,
+			identifier = nil,
+			conditional = nil, -- keyword
+			repeat_keyword = nil, -- keyword (like `for`?)
+			storageClass = nil, -- cyan (static, register, volatile, etc)
+			string = colors.main.green,
+			structure = nil, -- type
+			const = nil,
+			specialComment = nil, -- comment (special things in comments)
+			boolean = nil, -- number
+			float = nil, -- number
+			statement = nil, -- cyan
+			label = nil, -- keyword (case, default, etc.)
+			exception = nil, -- red
+			include = nil, -- macro
+			typedef = nil, -- red
+			special = nil, -- cyan (?)
+			specialChar = nil, -- red (?)
+			tag = nil, -- red (?)
+			delimiter = nil, -- operator (like ;, maybe commas?)
+			-- debug = nil, -- red
+			field = colors.editor.fg,
+			keyword = colors.main.purple,
+			value = colors.main.orange,
+			operator = colors.main.cyan,
+			fn = colors.main.blue,
+			parameter = colors.main.paleblue,
+			type = colors.main.purple,
+		},
+		git = {
+			added = colors.main.green,
+			removed = colors.main.red,
+			modified = colors.main.blue,
+		},
+		lsp = {
+			warning = colors.main.yellow,
+			info = colors.main.paleblue,
+			hint = colors.main.purple,
+		},
+		backgrounds = {
+			sidebars = colors.editor.bg,
+			floating_windows = colors.editor.bg,
+			non_current_windows = colors.editor.bg,
+			bg_blend = colors.editor.bg, -- backup used for blending backgrounds (issue: #212)
+			cursor_line = colors.editor.active,
+		},
+	}
+	apply.defaultSidebar = {
 		editor = {
 			variable = colors.editor.fg,
 			field = colors.editor.green,
