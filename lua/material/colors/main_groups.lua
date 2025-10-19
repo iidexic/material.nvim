@@ -137,22 +137,25 @@ local function make_main(id)
 	}
 	groups.monokai_machine = {
 		main = {
+			-- old/alt:
+			-- grays: b8c4c3, 8b9798, 6b7678, 545f62, 454f53, 273136, 1D2528, 161a1d --red = ff6188
+			--green = a9dc76 --yellow = ffd866 --cyan = 78dce8 --purple = ab9df2 --orange = ff9867
 			white = "#f2fffc",
-			gray = "#6b7678", -- b8c4c3, 8b9798, 6b7678, 545f62, 454f53, 273136, 1D2528, 161a1d
+			gray = "#6b7678",
 			black = "#161a1d",
-			red = "#ff6d7e", --ff6188
-			green = "#a2e57b", --a9dc76
-			yellow = "#ffed72", --ffd866
-			blue = "#78dce8",
-			paleblue = "#7cd5f9",
-			cyan = "#7cd5f9", --78dce8
-			purple = "#baa0f8", --ab9df2
-			orange = "#FFB270", --fc9867
+			red = "#f07e86", -- #ff6d7e
+			green = "#a2e57b",
+			yellow = "#ffed72",
+			blue = "#50acff", -- dev: 78dce8
+			paleblue = "#afe4ff", -- dev: 7cd5f9
+			cyan = "#6cdff9", -- dev: 7cd5f9
+			purple = "#baa0f8",
+			orange = "#FFB270",
 
 			darkred = "#e14775",
 			darkgreen = "#269D69",
 			darkyellow = "#Cf9f4A",
-			darkblue = "#6E98EB",
+			darkblue = "#6E98EB", -- dev: 6E98EB
 			darkcyan = "#4C8Ca8",
 			darkpurple = "#7058BE",
 			darkorange = "#E16032",
@@ -186,26 +189,128 @@ local function make_main(id)
 			white = "#f0e6dd",
 			gray = "#908984",
 			black = "#0d1012",
-			red = "#ed6057",
-			green = "#babe40", -- strings
-			yellow = "#f2b63a", -- (i think) struct member names, builtin const names, struct names, global alias?
-			blue = "#70a0aa", -- func names, method names (when called)
-			paleblue = "#c0c8d6",
-			cyan = "#b06f57", -- some keywords (func, type), maybe comments?
-			purple = "#fa8a8d", -- keywords for loop/logical, types, struct names (defining)
-			orange = "#ef7031", -- number values
+			red = "#ff7050",
+			green = "#9f9f64", -- cf 698e6c
+			yellow = "#feeaa7", --d0ba60, caaf68
+			blue = "#65abd2", -- cf 289dd9 - 30b0ff
+			paleblue = "#fdcb6f", -- e4a84b (not blue)
+			cyan = "#af7f70", -- c3cacf cf 6cccad
+			purple = "#9274ce", -- cf 9274ce - 8a80ff
+			orange = "#f5873a", -- df8031number values
 			-- pink       = "#FF9CAC",
-			darkred = "#ba4020",
-			darkgreen = "#6a7832",
-			darkyellow = "#7a5f19",
-			darkblue = "#40607a",
-			darkcyan = "#7e5030",
-			darkpurple = "#563e7f",
-			darkorange = "#a05030",
+			darkred = "#ba604c",
+			darkgreen = "#5f6953", -- 4f6f40
+			darkyellow = "#7f6a29", -- 7a5f19
+			darkblue = "#2165af", -- 40607a - cf 2165cf
+			darkcyan = "#2d5c5a", --0e7a6a -  7e5030
+			darkpurple = "#55398b", -- 563e7f
+			darkorange = "#905020", -- a05030
+		},
+	}
+	groups.xxx = {
+		main = {
+			white = "#eff5ed",
+			gray = "#9aaaa4",
+			black = "#0d0a0b",
+			red = "#bf7f7c", --bf7a84
+			green = "#9ac690", -- strings
+			yellow = "#bfbc9f", -- (i think) struct member names, builtin const names, struct names, global alias?
+			blue = "#c0dfe0", -- func names, method names (when called)
+			paleblue = "#d0dada",
+			cyan = "#90bfaa", -- some keywords (func, type), maybe comments?
+			purple = "#f4a0ac", --a88fb0 keywords for loop/logical, types, struct names (defining)
+			orange = "#cca8a0", -- number values
+			-- pink       = "#FF9CAC",
+			darkred = "#9a5043",
+			darkgreen = "#6a8a70",
+			darkyellow = "#5a643f",
+			darkblue = "#406a6a",
+			darkcyan = "#73a093",
+			darkpurple = "#65587f",
+			darkorange = "#7f7250",
+		},
+		main_alt = {
+			white = "#eaf0e8",
+			gray = "#808f8d",
+			black = "#0d0a0b",
+			red = "#da8a7a", -- b47660
+			green = "#9fc08a", -- strings
+			yellow = "#969278", --8a8d6a
+			blue = "#b0c5bd", -- func names, method names (when called)
+			paleblue = "#c0eadf",
+			cyan = "#90bc92", -- some keywords (func, type), maybe comments?
+			purple = "#a27f9f", -- keywords for loop/logical, types, struct names (defining)
+			orange = "#c0a860", -- number values
+			-- pink       = "#FF9CAC",
+			darkred = "#9a5043",
+			darkgreen = "#5f8f50",
+			darkyellow = "#5a643f",
+			darkblue = "#406a6a",
+			darkcyan = "#73a093",
+			darkpurple = "#65587f",
+			darkorange = "#7f7250",
+		},
+	}
+	groups.deusmaster = {
+		main = {
+			white = "#eae8cf", --ebdbb2
+			gray = "#928374",
+			black = "#181b20",
+			red = "#fb4934",
+			green = "#81be6a",
+			yellow = "#fabd2f",
+			blue = "#afd9e6",
+			paleblue = "#cfeffa",
+			cyan = "#83a598",
+			purple = "#c678dd",
+			orange = "#fe8019",
+			--pink = "#f0a0a0",
+
+			darkred = "#753a38",
+			darkgreen = "#384a3e",
+			darkyellow = "#695635",
+			darkblue = "#364556",
+			darkcyan = "#465c65", -- 363c45
+			darkpurple = "#6f5d85", --453d56
+			darkorange = "#a3592f", -- 923d38
+		},
+	}
+	groups.omni2 = {
+		--[[
+#191622, #641d2d, #30543f, #614d30, #35304c, #463a62,
+#3b6c52, #5c5b62, #9d1c38, #9f5810, #d67307, #e41f44,
+#85765e, #ef6963, #4fa563, #5fce76, #fe8700, #9f9264,
+#c4af77, #e7de79, #5b4d81, #5e9ba9, #67e480, #6cb9c9, 
+#78d0e0, #ddd5b7, #e1e1e6, #e0e2ea
+
+#c91e40, #5fcf76, #5a4b81, #80759d, #aed8e5, #1a1723, #e61f44
+--]]
+
+		main = {
+			white = "#e1e1e6",
+			gray = "#5c5b62",
+			black = "#191622",
+			red = "#e41f44",
+			green = "#5fcf76",
+			yellow = "#e7de79",
+			blue = "#78d0e0",
+			paleblue = "#aed8e5",
+			cyan = "#c4af77", -- 5e9ba9
+			purple = "#5a4b81",
+			orange = "#fe8700",
+			pink = "#f0a0a0",
+
+			darkred = "#9d1c38",
+			darkgreen = "#3b6c52",
+			darkyellow = "#614d30",
+			darkblue = "#5e9ba9",
+			darkcyan = "#85765e",
+			darkpurple = "#463a62",
+			darkorange = "#9f5810",
 		},
 	}
 	if groups[id] then
-		return groups.id
+		return groups[id]
 	else
 		return groups.default
 	end
@@ -314,6 +419,7 @@ local function make_edit_groups(colors, id)
 		lsp = { error = "#ef7358" },
 		syntax = { comments = "#7f7a65" },
 	}
+	eg.spacedust_pro_alt = eg.spacedust_pro
 	eg.dusty = {
 		backgrounds = { bg_blend = "#07191c", sidebars = "#181d25" },
 		lsp = { error = "#ef7358" },
@@ -344,7 +450,7 @@ local function make_edit_groups(colors, id)
 		editor = {
 			bg = "#131419", --"#191a1f",
 			bg_alt = "#1b2835",
-			fg = "#b4c0c4",
+			fg = "#bab4b4",
 			fg_darker = "#647084",
 			fg_dark = "#96a0af",
 			selection = "#27333c",
@@ -362,18 +468,18 @@ local function make_edit_groups(colors, id)
 		lsp = { error = "#aa4660" },
 		syntax = { comments = "#4f6072" },
 		editor = {
-			bg = "#262f34",
-			bg_alt = "#1A1A1A",
+			bg = "#212528",
+			bg_alt = "#202326",
 			fg = colors.main.white,
 			-- methods
-			fg_dark = "#8C8B8B",
+			fg_dark = "#8C9B9B",
 			-- vismode select
 			selection = "#627a90",
 			contrast = "#1A1A1A",
-			active = "#30404a",
-			border = "#34352f",
-			line_numbers = "#90908a", -- #c2c2bf
-			highlight = "#3F3F3F",
+			active = "#2e3639",
+			border = "#545052",
+			line_numbers = "#767076", -- #c2c2bf
+			highlight = "#4F5F5F",
 			disabled = "#474747",
 			accent = "#7Fe080", -- ActiveLineNum
 			fg_darker = "#647084",
@@ -384,31 +490,119 @@ local function make_edit_groups(colors, id)
 	}
 	eg.inferno = {
 		--backgrounds = {},
-		lsp = { error = "#984450" },
-		syntax = { comments = "#a88770" },
+		lsp = { error = "#a05f3a", info = "#7f604a", hint = "#abaF90" }, --info:7f7a65
+		syntax = { comments = "#505b66" },
 		editor = {
-			bg = "#11100c",
-			bg_alt = "#1A1A1A",
-			fg = colors.main.white,
+			bg = "#141312", -- 100f0e -- #141313
+			bg_alt = "#161817",
+			fg = "#d6d4d2",
+			fg_darker = "#344044",
 			-- methods
-			fg_dark = "#8C8B8B",
+			fg_dark = "#a0a8a0",
 			-- vismode select
-			selection = "#627a90",
-			contrast = "#1A1A1A",
-			active = "#30404a",
-			border = "#34352f",
-			line_numbers = "#90908a", -- #c2c2bf
-			highlight = "#3F3F3F",
-			disabled = "#474747",
-			accent = "#7Fe080", -- ActiveLineNum
-			fg_darker = "#647084",
+			selection = "#4a2820",
+			contrast = "#2A1A1A",
+			active = "#282a2c",
+			border = "#70747f",
+			line_numbers = "#50535f", -- #c2c2bf
+			highlight = "#3d3F43",
+			disabled = "#40464a",
+			accent = "#dFa070", -- ActiveLineNum
+			link = "#c46dac",
+			cursor = "#eff0c0", -- f8f8f2
+			title = "#f8f8f2",
+		},
+	}
+	eg.xxx = {
+		backgrounds = { bg_blend = "#101015", sidebars = "#1a1c24" },
+		lsp = { error = "#b05044" },
+		syntax = { comments = "#505b66" },
+		editor = {
+			bg = "#1b1e1e", -- 1f2120,
+			bg_alt = "#191a1a",
+			fg = "#e2e0e2",
+			fg_darker = "#5440d4",
+			-- methods
+			fg_dark = "#9098a0",
+			-- vismode select
+			selection = "#3f3a10",
+			contrast = "#2A1A1A",
+			active = "#282a2c",
+			border = "#70747f",
+			line_numbers = "#50535f", -- #c2c2bf
+			highlight = "#3d3F43",
+			disabled = "#40464a",
+			accent = "#d07c94", -- ActiveLineNum
 			link = "#c46dac",
 			cursor = "#f8f8f0",
 			title = "#f8f8f2",
 		},
 	}
+	eg.omni2 = {
+		--[[
+#191622, #641d2d, #30543f, #614d30, #35304c, #463a62,
+#3b6c52, #5c5b62, #9d1c38, #9f5810, #d67307, #e41f44,
+#85765e, #ef6963, #4fa563, #5fce76, #fe8700, #9f9264,
+#c4af77, #e7de79, #5b4d81, #5e9ba9, #67e480, #6cb9c9, 
+#78d0e0, #ddd5b7, #e1e1e6, #e0e2ea
+
+#c91e40, #5fcf76, #5a4b81, #80759d, #aed8e5, #1a1723, #e61f44
+--]]
+		editor = {
+			bg = "#19161f", -- 191522
+			bg_alt = "#25203c",
+			fg = "#b0bec5",
+			fg_dark = "#8090a0",
+			selection = "#34384f",
+			contrast = "#1a1c24",
+			active = "#2e2639",
+			border = "#e0e2ea",
+			line_numbers = "#463a62", -- #c2c2bf
+			highlight = "#302042",
+			disabled = "#3f3a20",
+			accent = "#ef6963", -- ActiveLineNum
+			link = "#c46dac",
+			cursor = "#cac28d", -- f8f8f2
+			title = "#f8f8f2",
+		},
+		lsp = { error = "#e06c6f", info = "#78d0e0", hint = "#ddd5b7" }, --info:7f7a65
+		syntax = { comments = "#463a62" },
+		backgrounds = { bg_blend = "#101015", sidebars = "#1a1c24" },
+		git = {
+			added = "#00ff00",
+			removed = "#ff0000",
+			modified = "#0000ff",
+		},
+	}
+	eg.deusmaster = {
+		editor = {
+			bg = "#262b33", -- 2c323b
+			bg_alt = "#364556",
+			fg = "#ebdbb2",
+			fg_dark = "#928374",
+			selection = "#394850",
+			contrast = "#57373a",
+			active = "#20242e", -- 262b33
+			border = "#928374",
+			line_numbers = "#767076", -- #c2c2bf
+			highlight = "#5a4a54",
+			disabled = "#474747",
+			accent = "#7Fe080", -- ActiveLineNum
+			link = "#c46dac",
+			cursor = "#ef6a58", -- eff0c0
+			title = "#f8f8f2",
+		},
+		lsp = { error = "#ba4d48", info = "#97bac7", hint = "#b772cd" }, --info:7f7a65
+		syntax = { comments = "#c0a57e" },
+		backgrounds = { bg_blend = "#101015", sidebars = "#1a1c24" },
+		git = {
+			added = "#98c379",
+			removed = "#ef6652",
+			modified = "#8eb8e5",
+		},
+	}
 	if eg[id] then
-		return eg.id
+		return eg[id]
 	else
 		return eg.darker
 	end
@@ -427,6 +621,15 @@ end
 ---@param id any # style name to be applied
 ---@return table # extended colors table
 function M.load_edit_group(colors, id)
+	return vim.tbl_deep_extend("force", colors, make_edit_groups(colors, id))
+end
+
+--- Applies all raw color assignments for a given style id
+---@param colors any # colors table to reference and extend
+---@param id any # style name to be applied
+---@return table # extended colors table
+function M.load_style(colors, id)
+	colors = vim.tbl_deep_extend("force", colors, make_main(id))
 	return vim.tbl_deep_extend("force", colors, make_edit_groups(colors, id))
 end
 return M

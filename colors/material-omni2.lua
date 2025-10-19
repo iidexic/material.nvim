@@ -8,4 +8,6 @@ package.loaded["material.functions"] = nil
 package.loaded["material.highlights"] = nil
 package.loaded["material.highlights.plugins"] = nil
 
+vim.g.material_style = "omni2"
+
 require("material.util").load()

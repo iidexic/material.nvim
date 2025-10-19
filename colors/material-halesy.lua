@@ -8,4 +8,6 @@ package.loaded["material.functions"] = nil
 package.loaded["material.highlights"] = nil
 package.loaded["material.highlights.plugins"] = nil
 
+vim.g.material_style = "halesy-UNFINISHED"
+
 require("material.util").load()
