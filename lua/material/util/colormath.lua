@@ -1,5 +1,6 @@
 local M = { c = {}, t = {} }
 
+-- NOTE: Color math functions are already in functions folder
 function M.badd(n, amt)
 	n = n + amt
 	if n > 255 then
