@@ -6,7 +6,7 @@ local apply_groups = require("material.colors.apply_groups")
 local styles = {
 	darker = { "darker", apply_id = "default", highvis = "darker_highvis" },
 	lighter = { "default", apply_id = "default", highvis = "lighter_highvis" },
-	omni2 = { "omni2", apply_id = "omni2" },
+	omni2 = { "omni2", apply_id = "monokai" },
 	spacedust = { "spacedust", apply_id = "default" },
 	spacedust_pro = { "spacedust_pro_alt", apply_id = "alternate" },
 	dusty = { "dusty", apply_id = "dusty" },
@@ -14,6 +14,8 @@ local styles = {
 	monokai_machine = { "monokai_machine", apply_id = "monokai" },
 	inferno = { "inferno", apply_id = "warm" },
 	xxx = { "xxx", apply_id = "xxx" },
+	xxl = { "xxl", apply_id = "xxx" },
+	halesy = { "halesy", apply_id = "halesy" },
 	deusmaster = { "deusmaster", apply_id = "deusmaster" },
 }
 

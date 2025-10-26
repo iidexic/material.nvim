@@ -32,6 +32,8 @@ M.toggle_style = function()
 		"darker",
 		"monokai_machine",
 		"xxx",
+		"xxl",
+		"halesy",
 		"dusty",
 		"deusmaster",
 		"lighter",

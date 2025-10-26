@@ -167,11 +167,11 @@ local function make_main(id)
 			gray = "#a6afb2",
 			black = "#282823",
 			red = "#d06d5f",
-			green = "#95cf7f", -- strings
-			yellow = "#cabf5f", -- (i think) struct member names, builtin const names, struct names, global alias?
-			blue = "#54c2ba", -- func names, method names (when called)
-			paleblue = "#9fcadf",
-			cyan = "#dc6f60", -- some keywords (func, type), maybe comments?
+			green = "#95cf7f", --(95cf7f | 80ca6f) strings
+			yellow = "#d0b26a", -- (i think) struct member names, builtin const names, struct names, global alias?
+			blue = "#6acfb6", --(54c2ba, moved to cyan) func names, method names (when called)
+			paleblue = "#dfca9f", -- 9fcadf
+			cyan = "#efc0c6", --(dc6f60, not cyan) some keywords (func, type), maybe comments?
 			purple = "#ad92df", -- keywords for loop/logical, types, struct names (defining)
 			orange = "#df8751", -- number values
 			-- pink       = "#FF9CAC",
@@ -251,6 +251,101 @@ local function make_main(id)
 			darkorange = "#7f7250",
 		},
 	}
+	groups.xxl = {
+		main = {
+			white = "#eff5ed",
+			gray = "#9aaaa4",
+			black = "#0d0a0b",
+			red = "#bf7f7c", --bf7a84
+			green = "#9ac690", -- strings
+			yellow = "#bfbc9f", -- (i think) struct member names, builtin const names, struct names, global alias?
+			blue = "#c0dfe0", -- func names, method names (when called)
+			paleblue = "#d0dada",
+			cyan = "#90bfaa", -- some keywords (func, type), maybe comments?
+			purple = "#f4a0ac", --a88fb0 keywords for loop/logical, types, struct names (defining)
+			orange = "#cf9e8e", -- number values
+			-- pink       = "#FF9CAC",
+			darkred = "#9a5043",
+			darkgreen = "#6a8a70",
+			darkyellow = "#5a643f",
+			darkblue = "#406a6a",
+			darkcyan = "#73a093",
+			darkpurple = "#65587f",
+			darkorange = "#7f7250",
+		},
+	}
+	local halesy = {}
+	groups.halesy = {}
+	halesy.main_uprange = {
+		white = "#f9f4dc",
+		midwhite = "#dcd8c6",
+		darkwhite = "#aeaa9d",
+		gray = "#82837d",
+		black = "#181b20",
+		red = "#f08f8a",
+		midred = "#e06860",
+		darkred = "#ca3a40",
+		green = "#b2f8aa",
+		midgreen = "#74ca6e",
+		darkgreen = "#4b9f40",
+		yellow = "#fadf8a",
+		midyellow = "#e0b440",
+		darkyellow = "#b07e30",
+		paleblue = "#baebff",
+		blue = "#90ccf0",
+		midblue = "#5a9ece",
+		darkblue = "#2e5f90",
+		cyan = "#aaefe2",
+		midcyan = "#6ac6c0",
+		darkcyan = "#208f9f",
+		-- cyan = "#afecef", -- #aaefe2
+		-- midcyan = "#68b6c0", -- #6ac6c0
+		-- darkcyan = "#20809f", -- #208f9f
+		-- teal = "#aef0d6", -- #aaefe2
+		-- midteal = "#6adab8", -- #6ac6c0
+		-- darkteal = "#209f8d", -- #208f9f
+
+		purple = "#bfa0fa",
+		midpurple = "#926fe8",
+		darkpurple = "#5a3eaf",
+		orange = "#fab880",
+		midorange = "#d08b4a",
+		darkorange = "#a05a30",
+		pink = "#fa9aaf",
+		midpink = "#df6f99",
+		darkpink = "#a04872",
+	}
+	halesy.main_shades = {
+		white = "#eae8cf", --ebdbb2
+		gray = "#82837d",
+		black = "#181b20",
+		red = "#f05e5a",
+		midred = "#d04e40",
+		darkred = "#9a4a50",
+		green = "#a0ea8f",
+		midgreen = "#70ae7e",
+		darkgreen = "#3b6c52",
+		yellow = "#f0ca6a",
+		midyellow = "#cfa450",
+		darkyellow = "#9e7440",
+		paleblue = "#c0dafa",
+		blue = "#84baef",
+		midblue = "#5a94c4",
+		darkblue = "#446a90",
+		cyan = "#7edfc2",
+		midcyan = "#55b6a0",
+		darkcyan = "#208874",
+		purple = "#bfa0fa",
+		midpurple = "#9a6fd2",
+		darkpurple = "#5a4ea4",
+		orange = "#faa06f",
+		midorange = "#da7a52",
+		darkorange = "#a05b3a",
+		pink = "#f8849f",
+		midpink = "#d06c8a",
+		darkpink = "#904b6a",
+	}
+	groups.halesy.main = halesy.main_uprange
 	groups.deusmaster = {
 		main = {
 			white = "#eae8cf", --ebdbb2
@@ -400,7 +495,9 @@ local function make_edit_groups(colors, id)
 	}
 	eg.spacedust_pro = {
 		editor = {
-			bg = "#121f22", --"#1c2a2f",
+			-- other_bgs darker(og) to lighter
+			other_bgs = { "#121d22", "#162126", "#1f2729", "#1c2a2f" },
+			bg = "#161f24", --
 			link = "#dec264",
 			cursor = "#80a2a4",
 			title = "#c0bb8E",
@@ -538,6 +635,51 @@ local function make_edit_groups(colors, id)
 			title = "#f8f8f2",
 		},
 	}
+	eg.xxl = {
+		backgrounds = { bg_blend = "#101015", sidebars = "#1a1c24" },
+		lsp = { error = "#b05044" },
+		syntax = { comments = "#505b66" },
+		editor = {
+			bg = "#2a2e2f", -- 1f2120,
+			bg_alt = "#191a1a",
+			fg = "#e2e0e2",
+			fg_darker = "#5440d4",
+			-- methods
+			fg_dark = "#9098a0",
+			-- vismode select
+			selection = "#263938",
+			contrast = "#2A1A1A",
+			active = "#282a2c",
+			border = "#70747f",
+			line_numbers = "#50535f", -- #c2c2bf
+			highlight = "#3d3F43",
+			disabled = "#40464a",
+			accent = "#d07c94", -- ActiveLineNum
+			link = "#c46dac",
+			cursor = "#f8f8f0",
+			title = "#f8f8f2",
+		},
+	}
+	eg.halesy = {
+		backgrounds = { bg_blend = "#1a1a1f", sidebars = "#1a1c24" },
+		lsp = { error = "#ef5358" },
+		syntax = { comments = "#4a5466" },
+		editor = {
+			bg = "#16171a", --"#10101f",
+			bg_alt = "#2b2f2d",
+			fg = "#c6c2c4",
+			fg_darker = "#909caa",
+			fg_dark = "#707f94",
+			selection = "#2a2e30",
+			contrast = "#5f1f38",
+			active = "#242a2c",
+			border = "#41434f",
+			line_numbers = "#404a4f",
+			highlight = "#1a506c",
+			disabled = "#464B5D",
+			accent = "#a0cf40",
+		},
+	}
 	eg.omni2 = {
 		--[[
 #191622, #641d2d, #30543f, #614d30, #35304c, #463a62,
@@ -551,7 +693,7 @@ local function make_edit_groups(colors, id)
 		editor = {
 			bg = "#19161f", -- 191522
 			bg_alt = "#25203c",
-			fg = "#b0bec5",
+			fg = "#d0dee5",
 			fg_dark = "#8090a0",
 			selection = "#34384f",
 			contrast = "#1a1c24",

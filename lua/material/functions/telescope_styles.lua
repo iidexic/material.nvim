@@ -14,6 +14,8 @@ if not ok then
 			"monokai_machine",
 			"inferno",
 			"xxx",
+			"xxl",
+			"halesy",
 			"deusmaster",
 		}
 		vim.ui.select(styles, { prompt = "Material" }, function(style)
@@ -61,6 +63,8 @@ else
 			"monokai_machine",
 			"inferno",
 			"xxx",
+			"xxl",
+			"halesy",
 			"deusmaster",
 		}),
 		prompt_title = "Material",

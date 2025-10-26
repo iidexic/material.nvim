@@ -17,7 +17,7 @@ function M.fg_or_link(color, linkto)
 end
 
 M.link_or_fg = function(linkto, color)
-	if linkto and linkto ~= "" then
+	if linkto and linkto ~= "" and vim.fn.hlexists(linkto) == 1 then
 		return { link = linkto }
 	else
 		return M.fg(color)
