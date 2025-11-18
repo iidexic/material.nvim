@@ -4,9 +4,10 @@ local M = {}
 if not ok then
 	M.find = function()
 		local styles = {
-			"darker",
+			"sleek",
 			"lighter",
 			"dusty",
+			"dirty",
 			"spacedust",
 			"spacedust_pro",
 			"omni2",
@@ -17,6 +18,7 @@ if not ok then
 			"xxl",
 			"halesy",
 			"deusmaster",
+			"perfected",
 		}
 		vim.ui.select(styles, { prompt = "Material" }, function(style)
 			vim.g.material_style = style
@@ -53,9 +55,10 @@ else
 	---options to call telescope with
 	local opts = {
 		finder = finders.new_table({
-			"darker",
+			"sleek",
 			"lighter",
 			"dusty",
+			"dirty",
 			"spacedust",
 			"spacedust_pro",
 			"omni2",
@@ -66,6 +69,7 @@ else
 			"xxl",
 			"halesy",
 			"deusmaster",
+			"perfected",
 		}),
 		prompt_title = "Material",
 		results_title = "styles",

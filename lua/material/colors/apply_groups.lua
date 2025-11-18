@@ -20,6 +20,36 @@ M.existing_groups = {
 ---@return table # apply group partial color table
 local function make_groups(colors, id)
 	local apply = {}
+	apply.sleek = {
+		syntax = {
+			variable = colors.editor.green,
+			field = colors.editor.cyan,
+			keyword = colors.main.red,
+			value = colors.main.yellow,
+			operator = colors.main.cyan,
+			fn = colors.main.orange,
+			parameter = colors.main.paleblue,
+			string = colors.main.green,
+			type = colors.main.purple,
+		},
+		git = {
+			added = colors.main.green,
+			removed = colors.main.red,
+			modified = colors.main.blue,
+		},
+		lsp = {
+			warning = colors.main.yellow,
+			info = colors.main.paleblue,
+			hint = colors.main.purple,
+		},
+		backgrounds = {
+			sidebars = colors.editor.bg,
+			floating_windows = colors.editor.bg,
+			non_current_windows = colors.editor.bg,
+			bg_blend = colors.editor.bg, -- backup used for blending backgrounds (issue: #212)
+			cursor_line = colors.editor.active,
+		},
+	}
 	apply.default = {
 		syntax = {
 			variable = colors.editor.fg,
@@ -161,6 +191,55 @@ local function make_groups(colors, id)
 		},
 	}
 	apply.dusty = {
+		syntax = {
+			-- identifier = nil,
+			-- conditional = nil,
+			-- repeat_keyword = nil,
+			-- storageClass = nil,
+			-- structure = nil,
+			-- specialComment = nil,
+			-- character = nil,
+			-- boolean = nil,
+			-- float = nil,
+			-- statement = nil, -- cyan
+			-- label = nil, -- keyword (case, default, etc.)
+			-- exception = nil, -- red
+			-- include = nil, -- macro
+			-- typedef = nil, -- red
+			-- special = nil, -- cyan
+			-- specialChar = nil, -- red
+			-- tag = nil, -- red
+			-- debug = nil, -- red
+			variable = colors.editor.fg,
+			repeat_keyword = colors.main.red,
+			field = colors.editor.fg,
+			keyword = colors.main.purple,
+			label = colors.main.red,
+			value = colors.main.orange,
+			operator = colors.main.cyan,
+			fn = colors.main.blue,
+			parameter = colors.main.paleblue,
+			string = colors.main.green,
+			type = colors.main.red,
+		},
+		git = {
+			added = colors.main.green,
+			removed = colors.main.red,
+			modified = colors.main.blue,
+		},
+		lsp = {
+			warning = colors.main.yellow,
+			info = colors.main.paleblue,
+			hint = colors.main.purple,
+		},
+		backgrounds = { -- function to check if sidebar currently bg?
+			floating_windows = colors.editor.bg,
+			--sidebars = colors.editor.bg,
+			non_current_windows = colors.editor.bg,
+			cursor_line = colors.editor.active,
+		},
+	}
+	apply.dirty = {
 		syntax = {
 			-- identifier = nil,
 			-- conditional = nil,
@@ -607,6 +686,79 @@ local function make_groups(colors, id)
 			bg_blend = colors.editor.bg, -- backup used for blending backgrounds (issue: #212)
 			cursor_line = colors.editor.active,
 		},
+	}
+	apply.perfected = {
+		syntax = {
+			builtin_type = colors.main.purple,
+			member = colors.main.red, -- struct field (field)
+
+			delimiter = colors.editor.fg_dark,
+
+			-- (HARD-ASSIGNED)
+			storageClass = colors.main.pink, -- nogo?
+			statement = colors.main.pink, -- nogo?
+			const = colors.main.paleblue,
+			exception = colors.main.red, -- red
+			special = colors.main.gray, -- cyan
+			property = colors.main.yellow, -- struct field
+
+			variable = colors.main.fg_dark,
+			field = colors.main.orange,
+
+			keyword = colors.main.red,
+			keyword_type = colors.main.purple,
+			bracket = colors.main.cyan,
+
+			value = colors.editor.pink,
+			operator = colors.main.pink,
+
+			fn = colors.editor.paleblue,
+			fn_call = colors.main.blue,
+			fn_method = colors.main.paleblue,
+			fn_method_call = colors.main.blue,
+
+			parameter = colors.main.paleblue,
+			string = colors.editor.fg,
+			type = colors.main.green,
+		},
+		git = {
+			added = colors.main.green,
+			removed = colors.main.red,
+			modified = colors.main.blue,
+		},
+		lsp = {
+			warning = colors.main.yellow,
+			info = colors.main.paleblue,
+			hint = colors.main.purple,
+		},
+		backgrounds = {
+			--sidebars = colors.editor.bg,
+			--floating_windows = colors.editor.bg,
+			non_current_windows = colors.editor.bg,
+			bg_blend = colors.editor.bg, -- backup used for blending backgrounds (issue: #212)
+			statusline = colors.backgrounds.statusline or colors.editor.bg,
+		},
+		-- more syntax
+		--[VAR]
+		-- identifier = nil,
+		--[VALUE (number)]
+		-- float = nil,
+		-- boolean = nil,
+		--[KEYWORD]
+		-- conditional = nil,
+		-- repeat_keyword = nil,
+		-- label = nil, --probably no-go, case, default, etc.
+		-- kw_return = nil, -- return
+		--
+		--[TYPE]
+		--structure = colors.main.green,
+		--[OPERATOR]
+		-- [OTHER]
+		-- specialComment = nil,
+		-- tag_delim = nil, -- cyan
+		-- tag_attrib = nil, -- purple
+
+		-- [NO GO] character typedef = nil, -- nogo [?] specialChar=red , include=macro
 	}
 	if apply[id] then
 		return apply[id]

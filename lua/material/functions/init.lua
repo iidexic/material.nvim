@@ -29,12 +29,13 @@ M.toggle_style = function()
 		vim.g.material_style_iterator = 0
 	end
 	local styles = {
-		"darker",
+		"sleek",
 		"monokai_machine",
 		"xxx",
 		"xxl",
 		"halesy",
 		"dusty",
+		"dirty",
 		"deusmaster",
 		"lighter",
 		"fpwst",
@@ -42,6 +43,7 @@ M.toggle_style = function()
 		"spacedust",
 		"spacedust_pro",
 		"inferno",
+		"perfected",
 	}
 	vim.g.material_style_iterator = (vim.g.material_style_iterator % #styles) + 1
 	M.change_style(styles[vim.g.material_style_iterator])
@@ -103,5 +105,8 @@ end
 M.darken = function(color, amount, bg)
 	return M.blend(color, bg or "#000000", amount)
 end
+M.cc = {}
+M.cc.hex_to_rgb = hex_to_rgb
+M.cc.rgb_to_hex = rgb_to_hex
 
 return M

@@ -5,6 +5,28 @@ local M = {}
 ---@return table # table that contains main table for given id (style)
 local function make_main(id)
 	local groups = {}
+	groups.sleek = {
+		main = {
+			white = "#EEFFFF",
+			gray = "#717CB4",
+			black = "#000000",
+			red = "#F06f77",
+			green = "#b0ef8a",
+			yellow = "#FFCB6B",
+			blue = "#72b0Fa",
+			paleblue = "#a0daFF",
+			cyan = "#69eDF0",
+			purple = "#C792EA",
+			orange = "#Fa8a60",
+			darkred = "#DC6068",
+			darkgreen = "#ABCF76",
+			darkyellow = "#E6B455",
+			darkblue = "#6E98EB",
+			darkcyan = "#71C6E7",
+			darkpurple = "#B480D6",
+			darkorange = "#E2795B",
+		},
+	}
 	groups.default = {
 		main = {
 			white = "#EEFFFF",
@@ -184,6 +206,29 @@ local function make_main(id)
 			darkorange = "#995333",
 		},
 	}
+	groups.dirty = {
+		main = {
+			white = "#f0f6f2",
+			gray = "#a6afb2",
+			black = "#282823",
+			red = "#d46f50",
+			green = "#b0bf5f", --(95cf7f | 80ca6f) strings
+			yellow = "#e0c26f", -- (i think) struct member names, builtin const names, struct names, global alias?
+			blue = "#6aafe6", --(54c2ba, moved to cyan) func names, method names (when called)
+			paleblue = "#dfca9f", -- 9fcadf
+			cyan = "#afc0c6", --(dc6f60, not cyan) some keywords (func, type), maybe comments?
+			purple = "#daa2ba", -- keywords for loop/logical, types, struct names (defining)
+			orange = "#df8751", -- number values
+			-- pink       = "#FF9CAC",
+			darkred = "#9a4450",
+			darkgreen = "#4a8062",
+			darkyellow = "#8c734b",
+			darkblue = "#20547b",
+			darkcyan = "#069fa7",
+			darkpurple = "#563e7f",
+			darkorange = "#995333",
+		},
+	}
 	groups.inferno = {
 		main = {
 			white = "#f0e6dd",
@@ -212,14 +257,14 @@ local function make_main(id)
 			white = "#eff5ed",
 			gray = "#9aaaa4",
 			black = "#0d0a0b",
-			red = "#bf7f7c", --bf7a84
-			green = "#9ac690", -- strings
-			yellow = "#bfbc9f", -- (i think) struct member names, builtin const names, struct names, global alias?
-			blue = "#c0dfe0", -- func names, method names (when called)
-			paleblue = "#d0dada",
-			cyan = "#90bfaa", -- some keywords (func, type), maybe comments?
-			purple = "#f4a0ac", --a88fb0 keywords for loop/logical, types, struct names (defining)
-			orange = "#cca8a0", -- number values
+			red = "#bf746c", --bf7a84
+			green = "#a6c690", -- strings
+			yellow = "#cfc5ad", -- (i think) struct member names, builtin const names, struct names, global alias?
+			blue = "#d0dfe0", -- func names, method names (when called)
+			paleblue = "#d0e6ef",
+			cyan = "#b0c2ba", -- some keywords (func, type), maybe comments?
+			purple = "#fa90a4", --a88fb0 keywords for loop/logical, types, struct names (defining)
+			orange = "#cc9e90", -- number values
 			-- pink       = "#FF9CAC",
 			darkred = "#9a5043",
 			darkgreen = "#6a8a70",
@@ -404,6 +449,43 @@ local function make_main(id)
 			darkorange = "#9f5810",
 		},
 	}
+	groups.perfected = {
+		main = {
+			--#e06050 #ec9a60 #f0d06a #7fdf6f
+			--#34c0f0 #60eaaf #a0d8fb #bc7fef #faaacf
+			--
+			-- quick 4color
+			-- #333244, #7f8cf0, #FA5A59, #73F5B5, #FAF083, #F5F4EA,
+			--
+			white = "#f4f3ec",
+			gray = "#adacb0",
+			black = "#20212a",
+			red = "#ef6f56", -- #ef684a
+			green = "#88da6a", -- #84cf4f
+			yellow = "#eeef8f", -- #eab12f, #e0ca1f
+			blue = "#5fcafa", -- "#54bfe6",
+			paleblue = "#a0eafe",
+			cyan = "#da70a0",
+			purple = "#a07adc", -- keywords for loop/logical, types, struct names (defining)
+			orange = "#f0a061", -- number values
+			pink = "#6aefc6",
+			midwhite = "#dcd8c6",
+			midred = "#de7f7a",
+			midgreen = "#50c056",
+			midblue = "#409eca",
+			midpurple = "#926fe8",
+			midcyan = "#6ac6c0",
+			darkred = "#ca3a40",
+			darkgreen = "#4b9f40",
+			darkyellow = "#b07e30",
+			darkblue = "#2e5f90",
+			darkcyan = "#208f9f",
+
+			darkpurple = "#5a3eaf",
+			darkorange = "#a05a30",
+			darkpink = "#a04872",
+		},
+	}
 	if groups[id] then
 		return groups[id]
 	else
@@ -418,20 +500,20 @@ end
 ---@return table # table containing editor colors and partial lsp, syntax, background colors
 local function make_edit_groups(colors, id)
 	local eg = {}
-	eg.darker = {
+	eg.sleek = {
 		editor = {
-			bg = "#212121",
-			bg_alt = "#1A1A1A",
+			bg = "#2a2d34",
+			bg_alt = "#25292c",
 			fg = "#B0BEC5",
 			fg_dark = "#8C8B8B",
-			selection = "#404040",
+			selection = "#406070",
 			contrast = "#1A1A1A",
-			active = "#323232",
-			border = "#343434",
-			highlight = "#3F3F3F",
-			disabled = "#474747",
-			accent = "#FF9800",
-			line_numbers = "#424242",
+			active = "#25282a",
+			border = "#3f4a54",
+			highlight = "#6F6a3F",
+			disabled = "#6a4047",
+			accent = "#8F68f0",
+			line_numbers = "#4d5868",
 		},
 		syntax = { comments = "#515151" },
 	}
@@ -442,7 +524,7 @@ local function make_edit_groups(colors, id)
 	eg.lighter = {
 		syntax = { comments = "#AABFC9" },
 		editor = {
-			bg = "#FAFAFA",
+			bg = "#e0eae5",
 			bg_alt = "#FFFFFF",
 			contrast = "#EEEEEE",
 			active = "#E7E7E8",
@@ -535,6 +617,29 @@ local function make_edit_groups(colors, id)
 			border = "#3f5f64",
 			line_numbers = "#ba9f66",
 			highlight = "#1a506c",
+			disabled = "#464B5D",
+			accent = "#f06a5a",
+			comments = "#4f847f",
+		},
+	}
+	eg.dirty = {
+		backgrounds = { bg_blend = "#07191c", sidebars = "#201c1a" },
+		lsp = { error = "#ef7358" },
+		syntax = { comments = "#8f847f" },
+		editor = {
+			bg = "#282320",
+			bg_alt = "#241f1a",
+			fg = "#dedfdf",
+			link = "#de82b4",
+			cursor = "#c0b098",
+			title = "#90bbdE",
+			fg_dark = "#bcbab0",
+			selection = "#7f4455",
+			contrast = "#583c2a", --"#090B10",
+			active = "#403c33",
+			border = "#514f4f",
+			line_numbers = "#baaf96",
+			highlight = "#6a501c",
 			disabled = "#464B5D",
 			accent = "#f06a5a",
 			comments = "#4f847f",
@@ -672,12 +777,14 @@ local function make_edit_groups(colors, id)
 			fg_dark = "#707f94",
 			selection = "#2a2e30",
 			contrast = "#5f1f38",
-			active = "#242a2c",
+			active = "#1b1c24",
+			statusline = "#22232a",
+			cursorline = "#242a2c",
 			border = "#41434f",
 			line_numbers = "#404a4f",
 			highlight = "#1a506c",
-			disabled = "#464B5D",
-			accent = "#a0cf40",
+			disabled = "#4d5a5f",
+			accent = "#90c04f",
 		},
 	}
 	eg.omni2 = {
@@ -701,7 +808,7 @@ local function make_edit_groups(colors, id)
 			border = "#e0e2ea",
 			line_numbers = "#463a62", -- #c2c2bf
 			highlight = "#302042",
-			disabled = "#3f3a20",
+			disabled = "#7a6b40",
 			accent = "#ef6963", -- ActiveLineNum
 			link = "#c46dac",
 			cursor = "#cac28d", -- f8f8f2
@@ -741,6 +848,34 @@ local function make_edit_groups(colors, id)
 			added = "#98c379",
 			removed = "#ef6652",
 			modified = "#8eb8e5",
+		},
+	}
+	eg.perfected = {
+		backgrounds = {
+			bg_blend = "#37198c",
+			sidebars = "#131319",
+			floating_windows = "#1f1d2a",
+		},
+		lsp = { error = "#ef7358" },
+		syntax = { comments = "#807f7d" },
+		editor = {
+			bg = "#17181e",
+			cursorline = "#10111a",
+			bg_alt = "#24161f",
+			fg = "#cacadf",
+			link = "#df92d0",
+			cursor = "#cddaee",
+			title = "#e0bbaE",
+			fg_dark = "#bcb6be",
+			selection = "#402630",
+			contrast = "#583f4a", --"#090B10",
+			active = "#3a485e",
+			statusline = "#20242a",
+			border = "#2f304a",
+			disabled = "#46485D", -- first tabrow
+			line_numbers = "#404a5a",
+			highlight = "#1a506c",
+			accent = "#f06a5a",
 		},
 	}
 	if eg[id] then
