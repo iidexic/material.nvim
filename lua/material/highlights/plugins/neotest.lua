@@ -8,6 +8,7 @@ local M = {}
 M.load = function()
     local plugin_hls = {
         NeotestAdapterName = { fg = m.darkred },
+        NeotestBorder = { fg = e.border },
         NeotestDir = { fg = m.blue },
         NeotestExpandMarker = { fg = e.contrast },
         NeotestFailed = { link = "DiagnosticError" },
@@ -22,6 +23,7 @@ M.load = function()
         NeotestTarget = { fg = m.red },
         NeotestTest = { fg = e.fg },
         NeotestUnknown = { fg = e.fg },
+        NeotestWatching = { link = "DiagnosticInfo" },
         NeotestWinSelect = { fg = m.blue, bold = true },
     }
 
