@@ -7,22 +7,22 @@ local M = {}
 
 M.load = function()
     local plugin_hls = {
-        NeotestPassed = { fg = m.green },
+        NeotestAdapterName = { fg = m.darkred },
+        NeotestDir = { fg = m.blue },
+        NeotestExpandMarker = { fg = e.contrast },
         NeotestFailed = { link = "DiagnosticError" },
+        NeotestFile = { fg = m.blue },
+        NeotestFocused = { bold = true, underline = true },
+        NeotestIndent = { fg = e.contrast },
+        NeotestMarked = { fg = m.darkyellow, bold = true },
+        NeotestNamespace = { fg = m.purple },
+        NeotestPassed = { fg = m.green },
         NeotestRunning = { fg = m.yellow },
         NeotestSkipped = { link = "DiagnosticHint" },
-        NeotestTest = { fg = e.fg },
-        NeotestNamespace = { fg = m.purple },
-        NeotestFocused = { bold = true, underline = true },
-        NeotestFile = { fg = m.blue },
-        NeotestDir = { fg = m.blue },
-        NeotestIndent = { fg = e.contrast },
-        NeotestExpandMarker = { fg = e.contrast },
-        NeotestAdapterName = { fg = m.darkred },
-        NeotestWinSelect = { fg = m.blue, bold = true },
-        NeotestMarked = { fg = m.darkyellow, bold = true },
         NeotestTarget = { fg = m.red },
+        NeotestTest = { fg = e.fg },
         NeotestUnknown = { fg = e.fg },
+        NeotestWinSelect = { fg = m.blue, bold = true },
     }
 
     return plugin_hls
