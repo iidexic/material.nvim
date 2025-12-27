@@ -10,11 +10,11 @@ M.load = function()
         NeotestAdapterName = { fg = m.darkred },
         NeotestBorder = { fg = e.border },
         NeotestDir = { fg = m.blue },
-        NeotestExpandMarker = { fg = e.contrast },
+        NeotestExpandMarker = { link = "NeotestIndent" }, -- shown immediately after indent
         NeotestFailed = { link = "DiagnosticError" },
         NeotestFile = { fg = m.blue },
         NeotestFocused = { bold = true, underline = true },
-        NeotestIndent = { fg = e.contrast },
+        NeotestIndent = { fg = e.line_numbers }, -- aka tree symbols
         NeotestMarked = { fg = m.darkyellow, bold = true },
         NeotestNamespace = { fg = m.purple },
         NeotestPassed = { fg = m.green },
