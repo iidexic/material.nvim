@@ -7,10 +7,8 @@ package.loaded["material.colors.apply_groups"] = nil
 package.loaded["material.functions"] = nil
 package.loaded["material.highlights"] = nil
 package.loaded["material.highlights.plugins"] = nil
--- for k, _ in pairs(package.loaded["material.colors.styles"]) do
--- 	package.loaded["material.colors.styles." .. k] = nil
--- end
+package.loaded["material.colors.styles"] = nil
 
-vim.g.material_style = "deusmaster"
+vim.g.material_style = "minimal"
 
 require("material.util").load()

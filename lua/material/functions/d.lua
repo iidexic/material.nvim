@@ -26,6 +26,9 @@ function M.fg_or_link(color, linkto)
 	return M.fg(color) or { link = linkto }
 end
 
+--- (unused) returns {link = linkto} if linkto points to a valid existing highlight group, else returns {fg = color}
+--- @param linkto string
+--- @param color string
 M.link_or_fg = function(linkto, color)
 	if linkto and linkto ~= "" and vim.fn.hlexists(linkto) == 1 then
 		return { link = linkto }
@@ -49,15 +52,9 @@ M.selectContrasting = function(lc, dc, bg)
 end
 
 -- ── Color math functions ────────────────────────────────────────────
-
+-- Not Necessary
 local bclamp = function(n)
-	if n < 0 then
-		return 0
-	elseif n > 255 then
-		return 255
-	else
-		return n
-	end
+	return math.min(math.max(n, 0), 255)
 end
 
 function M.t.all_vals_are(tbl, typestr)
@@ -78,7 +75,6 @@ end
 ---@param add any
 ---@return string
 function M.c.addcolor(colorval, add)
-	vim.print("bringo")
 	local a = { r = -8, g = -8, b = -8 }
 	if add then
 		if type(add) == "number" then

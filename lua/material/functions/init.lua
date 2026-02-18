@@ -30,6 +30,7 @@ M.toggle_style = function()
 	end
 	local styles = {
 		"sleek",
+		"minimal",
 		"monokai_machine",
 		"xxx",
 		"xxl",

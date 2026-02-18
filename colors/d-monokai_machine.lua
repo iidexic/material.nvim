@@ -7,7 +7,8 @@ package.loaded["material.colors.apply_groups"] = nil
 package.loaded["material.functions"] = nil
 package.loaded["material.highlights"] = nil
 package.loaded["material.highlights.plugins"] = nil
+package.loaded["material.colors.styles"] = nil
 
-vim.g.material_style = "dusty"
+vim.g.material_style = "monokai_machine"
 
 require("material.util").load()

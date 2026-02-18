@@ -38,33 +38,35 @@ M.main_highlights.syntax = function()
 		Keyword = { fg = s.keyword },
 		KeywordType = { fg = s.keyword_type or s.keyword },
 		Conditional = { fg = s.conditional or s.keyword },
+		Repeat = { fg = s.repeat_keyword or s.keyword }, -- for, while, etc.
+		Include = d.fg_or_link(s.include, "Macro"), -- package, import
 
 		Function = { fg = s.fn },
 		FunctionBuiltin = { fg = s.builtin_fn or s.fn },
 		FunctionCall = { fg = s.fn_call or s.fn },
 		FunctionMethod = { fg = s.fn_method or s.fn },
-		FunctionMethodCall = { fg = s.fn_method_call or s.fn_call or s.fn },
-		Repeat = { fg = s.repeat_keyword or s.keyword },
+		FunctionMethodCall = { fg = s.fn_method_call or s.fn_method or s.fn_call or s.fn },
 		String = { fg = s.string }, -- string + rune
+		SpecialComment = d.fg_or_link(s.specialComment, "Comment"), -- special things in comment
 		Type = { fg = s.type }, -- no go
 		Structure = { fg = s.type }, -- no go
-		SpecialComment = d.fg_or_link(s.specialComment, "Comment"), -- special things inside a comment
+
+		Bracket = { fg = s.bracket or m.blue },
 		-- ──────────────────────────────── NEW ────────────────────────────────
-		VarMember = { fg = s.member or e.fg_dark }, -- yellow
+		VarMember = { fg = s.member or s.variable or m.yellow }, -- yellow
 		VarParam = d.fg_or_link(s.parameter, "Identifier"), -- yellow
 		VarBuiltin = d.fg_or_link(s.builtin_var, "Identifier"),
 		-- ─────────────────────────────────────────────────────────────────────
-		Constant = { fg = s.const or m.yellow }, -- yellow
+		Constant = { fg = s.const or s.statement or m.yellow }, -- yellow
 		ConstBuiltin = d.fg_or_link(s.builtin_const, "Constant"),
-		Number = { fg = s.value },
+		Number = { fg = s.integer or s.float or s.value },
 		Character = { link = "Number" }, -- no go
 		Boolean = d.fg_or_link(s.boolean, "Number"),
 		Float = d.fg_or_link(s.float, "Number"),
 		Label = { fg = s.label or s.keyword or m.yellow }, -- (no go?) case, default, etc.
 		Operator = { fg = s.operator },
 		Exception = { fg = s.exception or m.red },
-		Macro = { fg = m.cyan }, -- cyan
-		Include = { link = "Macro" },
+		Macro = { fg = s.macro or m.cyan }, -- cyan
 		-- Define = { link = "Macro" }, PreProc = { link = "Macro" }, PreCondit = { link = "Macro" },
 		Typedef = { fg = s.typedef or m.red },
 		Typequal = { fg = s.typequal or m.cyan },
@@ -78,7 +80,6 @@ M.main_highlights.syntax = function()
 		-- ── [More New] ──────────────────────────────────────────────────────
 		Tag_Delimiter = { fg = s.tag_delim or m.cyan }, -- cyan
 		Tag_Attribute = { fg = s.tag_attrib or m.purple }, -- purple
-		Bracket = { fg = s.bracket or m.blue },
 		-- htmlH1={fg=m.cyan,bold=true},htmlH2={fg=m.red,bold=true},htmlH3={fg=m.green,bold=true}
 	}
 
@@ -136,11 +137,11 @@ M.main_highlights.treesitter = function()
 			["@keyword"] = { fg = s.keyword }, -- cyan
 			-- Link @keyword
 			["@variable.builtin"] = { link = "@keyword" },
-			["@keyword.coroutine"] = { fg = m.cyan, italic = true },
+			["@keyword.coroutine"] = { fg = e.coroutine or m.cyan, italic = true },
 			["@keyword.operator"] = { link = "@keyword" },
 			["@keyword.return"] = d.fg_or_link(s.kw_return, "@keyword"), -- return
 			["@keyword.function"] = d.fg_or_link(s.kw_func, "@keyword"), -- func
-			["@keyword.export"] = d.fg_or_link(s.kw_export, "@keyword"), -- not in go
+			["@keyword.export"] = d.fg_or_link(s.kw_export, "@keyword"), -- nogo
 
 			["@keyword.conditional"] = { link = "Conditional" },
 			["@keyword.repeat"] = { link = "Repeat" },
@@ -154,7 +155,7 @@ M.main_highlights.treesitter = function()
 
 			["@keyword.directive"] = { fg = m.fg_dark }, -- nogo
 			["@macro"] = { fg = m.fg_dark }, -- nogo
-			["@module"] = { fg = m.pink }, -- package name only
+			["@module"] = { fg = s.module or m.pink }, -- package name only
 
 			["@string"] = { link = "String" },
 			["@string.escape"] = { fg = s.string_escape or s.string or m.orange },
@@ -317,7 +318,7 @@ M.main_highlights.editor = function()
 		ErrorMsg = { fg = l.error },
 		Folded = { fg = e.disabled, bg = e.bg_alt, italic = true },
 		FoldColumn = { fg = m.blue },
-		LineNr = { fg = e.line_numbers },
+		LineNr = { fg = e.line_numbers, bg = b.line_numbers or e.bg },
 		CursorLineNr = { fg = e.accent },
 		DiffAdd = { bg = functions.darken(g.added, 0.2, b.bg_blend) },
 		DiffChange = { bg = functions.darken(g.modified, 0.2, b.bg_blend) },
@@ -325,7 +326,7 @@ M.main_highlights.editor = function()
 		DiffText = { fg = g.modified, reverse = true },
 		ModeMsg = { fg = e.accent }, -- 'showmode' message (e.g., "-- INSERT -- ")
 		NonText = { fg = e.disabled },
-		SignColumn = { fg = e.fg },
+		SignColumn = { fg = e.fg, bg = b.sign_column or b.line_numbers or e.bg },
 		SpecialKey = { fg = m.purple },
 		StatusLine = { fg = e.fg, bg = e.statusline or e.active },
 		StatusLineNC = { fg = e.disabled, bg = e.statusline or e.bg },
@@ -361,7 +362,7 @@ end
 ---parts of the editor that get loaded asynchronously
 M.async_highlights.editor = function()
 	local editor_hls = {
-		NormalNC = { bg = b.non_current_windows },
+		NormalNC = { bg = b.non_current_windows or b.bg },
 		FloatBorder = { fg = e.border, bg = b.floating_windows },
 		SpellBad = { fg = m.red, italic = true, undercurl = true },
 		SpellCap = { fg = m.blue, italic = true, undercurl = true },
