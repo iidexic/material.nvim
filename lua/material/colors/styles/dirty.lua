@@ -2,15 +2,15 @@ local M = {}
 
 --[[
 Colors that are distinct
-# #dd2222 #
-# #dd9922
-# #dddd22
-# #40ab20
-# #22dd79
-# #11bbee
-# #2222dd
-# #9922dd
-# #dd22dd
+#aa2222 #dd2222 #dd2222 #dd2222
+#aa7722 #dd9922 #dd9922 #dd9922
+#aa9a22 #ddd022 #ddd022 #ddd022
+#208010 #40ab20 #40ab20 #40ab20
+#12997a #22dd79 #62dfa0 #22dd79
+#1179ba #11bbee #44cbee #11bbee
+#111188 #2240dd #5a5ff0 #7790fa
+#7a1fbf #9922dd #9922dd #9922dd
+#881188 #dd22dd #dd22dd #dd22dd
 #
 
 
@@ -43,22 +43,23 @@ M.colors = {
 	editor = {
 		link = "#dec264",
 		cursor = "#af8272",
-		title = "#9AF0E0",
-		bg = "#1d1b22", --"#191a1f",
-		bg_alt = "#2a2035",
+		title = "#FA70a0",
+		bg = "#201d28", --"#191a1f",
+		bg_alt = "#1a1622",
 		fg = "#d6c8c2",
-		fg_dark = "#7a7f9f",
-		selection = "#38323c",
+		fg_dark = "#7c81a1",
+		selection = "#3b1f2a",
 		contrast = "#583c2a",
 		active = "#38353f",
-		border = "#41434f",
+		border = "#41436f",
 		line_numbers = "#605a6f",
 		highlight = "#1a504c",
+		statusline = "#1a1420",
 		disabled = "#464B5D",
 		accent = "#438f55",
 	},
 	lsp = { error = "#E33B40" },
-	syntax = { comments = "#4f6072" },
+	syntax = { comments = "#6f605a" },
 	git = {},
 	backgrounds = {},
 }
@@ -88,7 +89,7 @@ M.apply = function(colors)
 			hint = colors.main.purple,
 		},
 		backgrounds = {
-			sidebars = colors.editor.bg,
+			sidebars = colors.editor.bg_alt,
 			floating_windows = colors.editor.bg,
 			-- non_current_windows = colors.editor.bg,
 			bg_blend = colors.editor.bg, -- backup used for blending backgrounds (issue: #212)
