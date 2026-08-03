@@ -133,15 +133,14 @@ M.main_highlights.treesitter = function()
 			-- constructor: lua: curly brackets, go: ?
 			["@constructor"] = { fg = m.blue }, -- blue
 
-			-- why would keyword not be keyword
-			["@keyword"] = { fg = s.keyword }, -- cyan
-			-- Link @keyword
-			["@variable.builtin"] = { link = "@keyword" },
+			-- link to classic Keyword so styles.keywords (italic/bold) propagate
+			["@keyword"] = { link = "Keyword" },
+			["@variable.builtin"] = { link = "Keyword" },
 			["@keyword.coroutine"] = { fg = e.coroutine or m.cyan, italic = true },
-			["@keyword.operator"] = { link = "@keyword" },
-			["@keyword.return"] = d.fg_or_link(s.kw_return, "@keyword"), -- return
-			["@keyword.function"] = d.fg_or_link(s.kw_func, "@keyword"), -- func
-			["@keyword.export"] = d.fg_or_link(s.kw_export, "@keyword"), -- nogo
+			["@keyword.operator"] = { link = "Keyword" },
+			["@keyword.return"] = d.fg_or_link(s.kw_return, "Keyword"), -- return
+			["@keyword.function"] = d.fg_or_link(s.kw_func, "Keyword"), -- func
+			["@keyword.export"] = d.fg_or_link(s.kw_export, "Keyword"), -- nogo
 
 			["@keyword.conditional"] = { link = "Conditional" },
 			["@keyword.repeat"] = { link = "Repeat" },
@@ -259,7 +258,7 @@ M.main_highlights.treesitter = function()
 		treesitter_hls["@include"] = treesitter_hls["@keyword.import"]
 		treesitter_hls["@repeat"] = treesitter_hls["@keyword.repeat"]
 
-		treesitter_hls["@keyword"] = vim.tbl_extend("keep", treesitter_hls["@keyword"], styles.keywords)
+		-- @keyword now links to Keyword (which already has styles.keywords extended), so no extend needed here
 		treesitter_hls["@keyword.directive"] =
 			vim.tbl_extend("keep", treesitter_hls["@keyword.directive"], styles.keywords)
 
