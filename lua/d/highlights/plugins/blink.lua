@@ -1,4 +1,4 @@
-local colors = require("material.colors")
+local colors = require("d.colors")
 
 local m = colors.main
 local e = colors.editor

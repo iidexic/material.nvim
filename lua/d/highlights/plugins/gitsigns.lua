@@ -1,4 +1,4 @@
-local colors = require "material.colors"
+local colors = require "d.colors"
 
 local e = colors.editor
 local g = colors.git

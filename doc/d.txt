@@ -1,9 +1,9 @@
 ================================================================================
-                                                                 *material.nvim*
-              __          _      __           _      ~
-  __ _  ___ _/ /____ ____(_)__ _/ / ___ _  __(_)_ _  ~
- /  ' \/ _ `/ __/ -_) __/ / _ `/ / / _ \ |/ / /  ' \ ~
-/_/_/_/\_,_/\__/\__/_/ /_/\_,_/_(_)_//_/___/_/_/_/_/ ~
+                                                                 *d.nvim*
+     __           _      ~
+  __/ / ___ _  __(_)_ _  ~
+/ _  / / _ \ |/ / /  ' \ ~
+\___/(_) _//_/___/_/_/_/_/ ~
                                                                                                                     
 
 Material.nvim is a colorscheme for NeoVim written in Lua with built in support
@@ -12,17 +12,17 @@ for native LSP, TreeSitter and many more plugins.
 ================================================================================
 CONTENTS
 
-    1. Features ................. |material-features|
-    2. Usage .................... |material-usage|
-    3. Styles ................... |material-styles|
-    4. Configuration ............ |material-configuration|
-    5. Examples ................. |material-examples|
-    6. Lualine setup ............ |material-lualine-setup|
-    7. Functions ................ |material-functions|
-    8. Mappings ................. |material-mappings|
+    1. Features ................. |d-features|
+    2. Usage .................... |d-usage|
+    3. Styles ................... |d-styles|
+    4. Configuration ............ |d-configuration|
+    5. Examples ................. |d-examples|
+    6. Lualine setup ............ |d-lualine-setup|
+    7. Functions ................ |d-functions|
+    8. Mappings ................. |d-mappings|
 
 ================================================================================
-1. Features                                             *material-features*
+1. Features                                             *d-features*
 
     + There are 5 styles to choose from: -oceanic
                                          -deep ocean
@@ -61,19 +61,19 @@ CONTENTS
       NeoVim
 
 ================================================================================
-2. Usage                                                   *material-usage*
+2. Usage                                                   *d-usage*
 
     To use the default settings, just apply the theme
 
     If you are using Vim-Script:
-        colorscheme material~
+        colorscheme d~
 
     If you are using Lua:
-        vim.cmd 'colorscheme material'~
+        vim.cmd 'colorscheme d'~
 
 
 ================================================================================
-3. Styles                                                 *material-styles*
+3. Styles                                                 *d-styles*
 
     The theme comes in 5 styles to choose from
 
@@ -101,20 +101,20 @@ CONTENTS
         contrast, but there is an option to increase the contrast of this
         style for those that want more visibilty.
 
-    The styles are set by setting the global variable 'material_style' to the
+    The styles are set by setting the global variable 'd_style' to the
     desired style name
     
     For example:
 
         Vim-Script:
-            let g:material_style = "palenight"~
+            let g:d_style = "palenight"~
         Lua:
-            vim.g.material_style = "deep ocean"~
+            vim.g.d_style = "deep ocean"~
 
     Just make sure to set the style before applying the colorscheme
 
 ================================================================================
-4. Configuration                                   *material-configuration*
+4. Configuration                                   *d-configuration*
 
 What sets material.nvim apart from most Vim/NeoVim themes is the wide array
 of options for customising the theme.
@@ -124,9 +124,9 @@ init.vim/init.lua before applying the colorscheme
 
 Options:
 
-The theme style is set using a global variable called material_style
+The theme style is set using a global variable called d_style
 
-    + g:material_style {string} (default = "oceanic")
+    + g:d_style {string} (default = "oceanic")
         This sets the style of the the theme, and can be initialized with one
         of these five values: -oceanic
                               -deep ocean
@@ -136,11 +136,11 @@ The theme style is set using a global variable called material_style
 
 All other options are passed to a setup function
 
-    + require('material').setup()
+    + require('d').setup()
 
 This is an example of the setup function with the default values:
 
-    require('material').setup({
+    require('d').setup({
         contrast = {
             terminal = false,
             sidebars = false,
@@ -255,15 +255,15 @@ This is an example of the setup function with the default values:
             - nvim-notify
 
 ================================================================================
-5. Examples                                         *material-examples*
+5. Examples                                         *d-examples*
 
 Example config in Lua:
 
     -- Theme style
-    vim.g.material_style = 'deep ocean'
+    vim.g.d_style = 'deep ocean'
 
     -- Colorscheme settings
-    require('material').setup({
+    require('d').setup({
         contrast = {
             sidebars = true,
             floating_windows = false,
@@ -300,11 +300,11 @@ Example config in Lua:
     })
 
     -- Apply the colorscheme
-    vim.cmd 'colorscheme material'
+    vim.cmd 'colorscheme d'
 
 If you want to use the custom_highlights table, this is how you would use it:
 
-require('material').setup({
+require('d').setup({
     ...
     custom_highlights = {
         Function = { fg = "#00FF00", bg = "#FF0000", italic = true },
@@ -325,9 +325,9 @@ require('material').setup({
 
 If you want to override the default colors, set custom_colors to a function
 that takes in the colors table as a parameter, and then modify them.
-To see the available colors, check lua/material/colors/init.lua
+To see the available colors, check lua/d/colors/init.lua
 
-require('material').setup({
+require('d').setup({
     custom_colors = function(colors)
         colors.editor.bg = "#SOME_COLOR",
         colors.main.blue = "#SOME_COLOR",
@@ -335,17 +335,17 @@ require('material').setup({
 })
 
 ================================================================================
-6. Lualine setup                                   *material-lualine-setup*
+6. Lualine setup                                   *d-lualine-setup*
 
     To enable the lualine themes, first set the theme
-    in your lualine settings to `auto` or `material`
+    in your lualine settings to `auto` or `d`
 
         require('lualine').setup {~
           options = {~
             -- ... your lualine config
             theme = 'auto'~
             or
-            theme = 'material'~
+            theme = 'd'~
             -- ... your lualine config
           }~
         }~
@@ -353,7 +353,7 @@ require('material').setup({
     Then, choose the style trough a variable called lualine_style
     in the theme setup function
 
-    require('material').setup({~
+    require('d').setup({~
         lualine_style = 'default' -- the default style
         or
         lualine_style = 'stealth' -- the stealth style
@@ -368,37 +368,37 @@ require('material').setup({
     require('lualine').setup {~
       options = {~
         -- ... your lualine config
-        theme = 'material-nvim' -- the default style
+        theme = 'd-nvim' -- the default style
         or
-        theme = 'material-stealth' -- the stealth style
+        theme = 'd-stealth' -- the stealth style
         -- ... your lualine config
       }~
     }~
 
 ================================================================================
-7. Functions                                           *material-functions*
+7. Functions                                           *d-functions*
 
 Material.nvim has built in functions that you can call or bind to a key
 
     + Use telescope.nvim to switch to a style
-          :lua require("material.functions").find_style()~
+          :lua require("d.functions").find_style()~
 
     + Cycle trough styles without the need to restart NeoVim
           Just call the funciton and it will switch to the next style:
-          :lua require('material.functions').toggle_style()~
+          :lua require('d.functions').toggle_style()~
 
     + Switch to a specific style
           Call the function for switching and pass in the name of the style
           that you want to switch to:
-          :lua require('material.functions').change_style('palenight')~
+          :lua require('d.functions').change_style('palenight')~
 
     + Toggle the end of buffer lines
           Call this function if you want to toggle the visibility of the lines at the end of
           the buffer: 
-          :lua require('material.functions').toggle_eob()~
+          :lua require('d.functions').toggle_eob()~
 
 ================================================================================
-8. Mappings                                             *material-mappings*
+8. Mappings                                             *d-mappings*
 
 You can map the built-in functions to keys
 This will allow you to change the style and toggle the end-of-buffer lines
@@ -406,14 +406,14 @@ at keypress
 
 Example:
 
-nnoremap <leader>mf :lua require('material.functions').find_style()<CR>
+nnoremap <leader>mf :lua require('d.functions').find_style()<CR>
 
-nnoremap <leader>mm :lua require('material.functions').toggle_style()<CR>
+nnoremap <leader>mm :lua require('d.functions').toggle_style()<CR>
 
-nnoremap <leader>me :lua require('material.functions').toggle_eob()<CR>
+nnoremap <leader>me :lua require('d.functions').toggle_eob()<CR>
 
-nnoremap <leader>md :lua require('material.functions').change_style('darker')<CR>
-nnoremap <leader>ml :lua require('material.functions').change_style('lighter')<CR>
+nnoremap <leader>md :lua require('d.functions').change_style('darker')<CR>
+nnoremap <leader>ml :lua require('d.functions').change_style('lighter')<CR>
 
 ================================================================================
 vim:tw=78:ts=4:ft=help:norl:

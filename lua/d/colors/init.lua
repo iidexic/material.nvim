@@ -29,8 +29,8 @@ colors.git = {}
 colors.backgrounds = {}
 
 -- ╭──────────────────────────── APPLY STYLE ────────────────────────────╮
-local style_id = vim.g.material_style or "minimal"
-local stylereq = "material.colors.styles." .. style_id
+local style_id = vim.g.d_style or "minimal"
+local stylereq = "d.colors.styles." .. style_id
 package.loaded[stylereq] = nil
 colors = require(stylereq).apply(colors)
 -- ╰─────────────────────────────────────────────────────────────────────╯

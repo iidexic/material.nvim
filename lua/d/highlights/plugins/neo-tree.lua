@@ -1,5 +1,5 @@
-local colors = require "material.colors"
-local settings = require "material.util.config".settings
+local colors = require "d.colors"
+local settings = require "d.util.config".settings
 
 -- remove the variables that you won't be needing
 -- to see what colors are available, check colors/init.lua

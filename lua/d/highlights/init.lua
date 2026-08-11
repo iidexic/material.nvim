@@ -1,14 +1,14 @@
-local colors = require("material.colors")
-local settings = require("material.util.config").settings
-local plugins = require("material.highlights.plugins")
-local functions = require("material.functions")
+local colors = require("d.colors")
+local settings = require("d.util.config").settings
+local plugins = require("d.highlights.plugins")
+local functions = require("d.functions")
 local styles = settings.styles
 --TODO: HIGHEST PRIORITY: Gotta re-write some shit over here
 --
 -- apply conditional colors
-colors = require("material.colors.conditionals")
+colors = require("d.colors.conditionals")
 
-local d = require("material.functions.d")
+local d = require("d.functions.d")
 
 local m = colors.main
 local e = colors.editor
@@ -16,8 +16,8 @@ local g = colors.git
 local l = colors.lsp
 local s = colors.syntax
 local b = colors.backgrounds
--- colors = require("material.colors.conditionals")
--- local customhl = require("material.colors.alt_hl")
+-- colors = require("d.colors.conditionals")
+-- local customhl = require("d.colors.alt_hl")
 -- vim.print(customhl.style_highlights(colors))
 
 local M = {}

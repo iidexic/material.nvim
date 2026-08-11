@@ -21,9 +21,9 @@ if not ok then
 			"deusmaster",
 			"perfected",
 		}
-		vim.ui.select(styles, { prompt = "Material" }, function(style)
-			vim.g.material_style = style
-			vim.cmd("colorscheme material")
+		vim.ui.select(styles, { prompt = "D" }, function(style)
+			vim.g.d_style = style
+			vim.cmd("colorscheme d")
 		end)
 	end
 else
@@ -48,8 +48,8 @@ else
 	---@param prompt_bufnr number buffer number of the prompt
 	local function enter(prompt_bufnr)
 		local selected = action_state.get_selected_entry()
-		vim.g.material_style = selected[1]
-		vim.cmd("colorscheme material")
+		vim.g.d_style = selected[1]
+		vim.cmd("colorscheme d")
 		actions.close(prompt_bufnr)
 	end
 
@@ -73,7 +73,7 @@ else
 			"deusmaster",
 			"perfected",
 		}),
-		prompt_title = "Material",
+		prompt_title = "D",
 		results_title = "styles",
 		sorter = sorters.get_fzy_sorter({}),
 		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },

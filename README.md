@@ -4,40 +4,39 @@
 </p>
 
 
-##  material.nvim
+## d-theme.nvim
 
 ![Neovim](https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white)
 ![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white)
 
 
-[NeoVim](https://neovim.io/) colorscheme based on [Material](https://www.material-theme.dev/) theme colors.
+[NeoVim](https://neovim.io/) dark colorscheme collection
 
 ---
 
 </div>
 
-## 🔱 Info
-A colorscheme for NeoVim that takes inspiration from the original [Material](https://www.material-theme.dev/) theme.
+## Info
+A varied collection of dark colorschemes for Neovim. Includes many home-rolled palettes and adaptations of some personal favorites.
 
-Material.nvim is meant to be a fast and modern colorscheme written in Lua that supports a lot of the new features
-added to NeoVim like built-in [LSP](https://github.com/neovim/nvim-lspconfig) and [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
+D-Theme is shamelessly derived from Material.nvim. 
+It has been modified to allow for deeper customization of colors and to make it easier to work with a larger number of styles.
+All of the same plugins are supported, but it might be a while before new changes make their way here.
 
-## 🌊 Features
+## Features
 
-+ 5 styles to choose from
++ 15 styles to choose from; all dark themes. They range from cool to neutral to warm
+### Adapted Styles
 
-    + Oceanic ![2022-04-18-01:21:38-screenshot](https://user-images.githubusercontent.com/76592799/163740712-493ff2e9-cd4f-41e0-b7cd-595b58924816.png)
+- spacedust (faithful version and tweaked/extended version)
+- deus
+- monokai pro machine
+- omni2
 
-    + Deep ocean ![2022-04-18-01:21:16-screenshot](https://user-images.githubusercontent.com/76592799/163740695-3c34201c-7ae4-482f-9548-53d08701bdd5.png)
-
-    + Palenight ![2022-04-18-01:21:33-screenshot](https://user-images.githubusercontent.com/76592799/163740722-5bad7a23-a93d-446b-901a-fa2cae0c611e.png)
-
-    + Lighter ![2022-04-18-01:21:28-screenshot](https://user-images.githubusercontent.com/76592799/163740732-bfb9bde2-f56b-48af-b8be-be8b1e18fef3.png)
-
-    + Darker ![2022-04-18-01:21:22-screenshot](https://user-images.githubusercontent.com/76592799/163740743-02c243ae-512d-4707-b865-5261e09072dd.png)
-
++ also add images like this ![2022-04-18-01:21:38-screenshot](https://user-images.githubusercontent.com/76592799/163740712-493ff2e9-cd4f-41e0-b7cd-595b58924816.png)
 
 
+### Features that come straight from material.nvim
 + Many supported plugins
 
 + Ability to change background on sidebar-like windows like Nvim-Tree, Packer, terminal etc.

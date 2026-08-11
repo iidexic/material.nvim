@@ -17,8 +17,8 @@
 
 local M = {}
 
-M.setup = require "material.util.config".setup
+M.setup = require "d.util.config".setup
 
--- M = vim.tbl_extend("keep", M, require "material.functions")
+-- M = vim.tbl_extend("keep", M, require "d.functions")
 
 return M

@@ -1,6 +1,6 @@
-local highlights = require "material.highlights"
-local colors = require "material.colors"
-local settings   = require "material.util.config".settings
+local highlights = require "d.highlights"
+local colors = require "d.colors"
+local settings   = require "d.util.config".settings
 
 local M = {}
 
@@ -19,14 +19,14 @@ local apply_highlights = function(extra_highlights)
                 vim.notify_once("highlight function for highlight-group '" ..
                     name .. "' returned '" .. type(ret) .. "', expected table",
                     vim.log.levels.ERROR,
-                    { title = "material.nvim" }
+                    { title = "d.nvim" }
                 )
             end
         else
             vim.notify_once("cannot create custom highlight '" .. name ..
                 "' from value of type '" .. type(values) .. "'",
                 vim.log.levels.ERROR,
-                { title = "material.nvim" }
+                { title = "d.nvim" }
             )
         end
         vim.api.nvim_set_hl(0, name, hl_val)
@@ -39,14 +39,14 @@ local prepare_environment = function()
         vim.cmd "hi clear"
     end
 
-    vim.g.colors_name     = "material"
+    vim.g.colors_name     = "d"
     vim.opt.termguicolors = true
 
     if vim.fn.exists "syntax_on" then
         vim.cmd "syntax reset"
     end
 
-    if vim.g.material_style == "lighter" then
+    if vim.g.d_style == "lighter" then
         vim.opt.background = "light"
     else
         vim.opt.background = "dark"
@@ -54,7 +54,7 @@ local prepare_environment = function()
 
     if not settings.disable.colored_cursor then
         vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:Cursor/Cursor"
-        local exit_group  = vim.api.nvim_create_augroup("MaterialExit", { clear = true })
+        local exit_group  = vim.api.nvim_create_augroup("DExit", { clear = true })
         vim.api.nvim_create_autocmd({"ExitPre", "ColorSchemePre"}, {
             command = "autocmd ExitPre * set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
             group   = exit_group
@@ -65,12 +65,12 @@ end
 ---give darker background to given filetypes or buftypes
 ---@param contrast_settings table names of filetypes to apply contrast to
 local apply_contrast = function(contrast_settings)
-    local group = vim.api.nvim_create_augroup("Material", { clear = true })
+    local group = vim.api.nvim_create_augroup("D", { clear = true })
 
-    -- clean up autogroups if the theme is not material
+    -- clean up autogroups if the theme is not d
     vim.api.nvim_create_autocmd("ColorScheme", { callback = function()
-        if vim.g.colors_name ~= "material" then
-            vim.api.nvim_del_augroup_by_name("Material")
+        if vim.g.colors_name ~= "d" then
+            vim.api.nvim_del_augroup_by_name("D")
         end
     end, group = group })
 

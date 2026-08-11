@@ -1,5 +1,5 @@
-local colors   = require "material.colors"
-local settings = require "material.util.config".settings
+local colors   = require "d.colors"
+local settings = require "d.util.config".settings
 local disabled = settings.disable
 
 -- disable borders

@@ -1,14 +1,14 @@
-package.loaded["material"] = nil
-package.loaded["material.util"] = nil
-package.loaded["material.colors"] = nil
-package.loaded["material.colors.conditionals"] = nil
-package.loaded["material.colors.main_groups"] = nil
-package.loaded["material.colors.apply_groups"] = nil
-package.loaded["material.functions"] = nil
-package.loaded["material.highlights"] = nil
-package.loaded["material.highlights.plugins"] = nil
-package.loaded["material.colors.styles"] = nil
+package.loaded["d"] = nil
+package.loaded["d.util"] = nil
+package.loaded["d.colors"] = nil
+package.loaded["d.colors.conditionals"] = nil
+package.loaded["d.colors.main_groups"] = nil
+package.loaded["d.colors.apply_groups"] = nil
+package.loaded["d.functions"] = nil
+package.loaded["d.highlights"] = nil
+package.loaded["d.highlights.plugins"] = nil
+package.loaded["d.colors.styles"] = nil
 
-vim.g.material_style = "omni2"
+vim.g.d_style = "omni2"
 
-require("material.util").load()
+require("d.util").load()

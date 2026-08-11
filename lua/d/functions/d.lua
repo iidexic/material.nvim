@@ -1,6 +1,6 @@
 local M = { c = {}, t = {} }
 
-local fn = require("material.functions")
+local fn = require("d.functions")
 local cc = fn.cc
 
 --- given a table of rgb values, returns the lum value

@@ -1,4 +1,4 @@
-local settings = require("material.util.config").settings
+local settings = require("d.util.config").settings
 
 local M = {}
 
@@ -18,15 +18,15 @@ end
 ---@param style string name of the style to switch to
 M.change_style = function(style)
 	set_lualine()
-	vim.g.material_style = style
+	vim.g.d_style = style
 	-- print("Material style: ", style)
-	vim.cmd("colorscheme material")
+	vim.cmd("colorscheme d")
 end
 
 ---toggle between styles
 M.toggle_style = function()
-	if vim.g.material_style_iterator == nil then
-		vim.g.material_style_iterator = 0
+	if vim.g.d_style_iterator == nil then
+		vim.g.d_style_iterator = 0
 	end
 	local styles = {
 		"sleek",
@@ -46,13 +46,13 @@ M.toggle_style = function()
 		"inferno",
 		"perfected",
 	}
-	vim.g.material_style_iterator = (vim.g.material_style_iterator % #styles) + 1
-	M.change_style(styles[vim.g.material_style_iterator])
+	vim.g.d_style_iterator = (vim.g.d_style_iterator % #styles) + 1
+	M.change_style(styles[vim.g.d_style_iterator])
 end
 
 ---toggle the end-of-buffer lines (~)
 M.toggle_eob = function()
-	local colors = require("material.colors").editor
+	local colors = require("d.colors").editor
 
 	settings.disable.eob_lines = not settings.disable.eob_lines
 
@@ -65,7 +65,7 @@ end
 
 ---use telescope to change the style
 M.find_style = function()
-	require("material.functions.telescope_styles").find()
+	require("d.functions.telescope_styles").find()
 end
 
 local rgb_to_hex = function(r, g, b)

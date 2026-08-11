@@ -30,7 +30,7 @@ there is no reason for it to get highlighted.
 
 If you want to add support for a plugin, follow this template:
 ```lua
-local colors = require "material.colors"
+local colors = require "d.colors"
 
 -- remove the variables that you won't be needing
 -- to see what colors are available, check colors/init.lua
